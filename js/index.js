@@ -150,13 +150,13 @@ parentElement.prepend(newContent)
 // to add two new items to the navigation system. You can call them whatever you want.
 
 const navItem = document.createElement("a")
-
+navItem.classList.add("some-class")
+navItem.textContent = "Blog"
+document.querySelector('nav').append(navItem)
 
 // navigationItems.classList.add('new-nav-link') // <li class="fruits"></li>
 // navigationItems.textContent = 'Blog' // <li class="fruits">kiwis</li>
 // document.querySelector('nav').append(navigationItems) // adds <li class="fruits">kiwis</li> to the DOM in <ul> below grapes
 
-// var tag = document.createElement("a");
-// navigationItems.innerHTML = '<span class="toggle">Jan</span>';
 
 //[] Check your work by looking at the[original html](original.html) in the browser
