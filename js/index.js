@@ -55,6 +55,7 @@ midImg.setAttribute('src', siteContent["main-content"]["middle-img-src"])
 //[] Remember, NO direct updating of the HTML source is allowed.*[] 
 //Using your selectors, update the content to match the example file.*[] 
 //Remember to update the src attributes on images
+//one way to do it - thanks 
 // const navContainer = document.getElementsByTagName("a"); //Find the tag name
 // const navArray = Array.from(navContainer)//Create an array from the HTML collection -- CONSIDER never using actual numeric characters
 // const navtextOne = navArray[0]; // assign 1rst item in Nodelist array index to number
@@ -77,29 +78,85 @@ headerOne.textContent = siteContent["cta"]["h1"]
 let ctaButton = document.querySelector("button");
 ctaButton.textContent = siteContent["cta"]["button"]
 
-//H4 in main content
-let mcFeatHeaderFour = document.querySelector("h4");
-mcFeatHeaderFour.textContent = siteContent["main-content"]["features-h4"]
-let mcAboutHeaderFour = document.querySelector("h4");
-mcAboutHeaderFour[3].textContent = siteContent["main-content"]["about-h4"]
+//H4 in entire doc
+let mHeaderFour = document.getElementsByTagName("h4");
+console.log(mHeaderFour) //Get count of h4 tags
+const headerFourFeat = mHeaderFour[0]
+headerFourFeat.textContent = siteContent["main-content"]["features-h4"]
+const headerFourAbout = mHeaderFour[1]
+headerFourAbout.textContent = siteContent["main-content"]["about-h4"]
+const headerFourServices = mHeaderFour[2]
+headerFourServices.textContent = siteContent["main-content"]["services-h4"]
+const headerFourProduct = mHeaderFour[3]
+headerFourProduct.textContent = siteContent["main-content"]["product-h4"]
+const headerFourVision = mHeaderFour[4]
+headerFourVision.textContent = siteContent["main-content"]["vision-h4"]
+const headerFourContact = mHeaderFour[5]
+headerFourContact.textContent = siteContent["contact"]["contact-h4"]
 
-// let allHeaderFour = document.querySelectorAll("h4");
-// console.log(allHeaderFour)
+//Paragraphs in entire doc
+let paragraphs = document.getElementsByTagName("p");
+console.log(paragraphs) //get count of p tags
+const paragraphsOne = paragraphs[0]
+paragraphsOne.textContent = siteContent["main-content"]["features-content"]
+const paragraphsTwo = paragraphs[1]
+paragraphsTwo.textContent = siteContent["main-content"]["about-content"]
+const paragraphsThree = paragraphs[2]
+paragraphsThree.textContent = siteContent["main-content"]["services-content"]
+const paragraphsFour = paragraphs[3]
+paragraphsFour.textContent = siteContent["main-content"]["product-content"]
+const paragraphsFive = paragraphs[4]
+paragraphsFive.textContent = siteContent["main-content"]["vision-content"]
+const paragraphsSix = paragraphs[5]
+paragraphsSix.textContent = siteContent["contact"]["vision-h4"]
+const paragraphsSeven = paragraphs[6]
+paragraphsSeven.textContent = siteContent["contact"]["address"]
+const paragraphsEight = paragraphs[7]
+paragraphsEight.textContent = siteContent["contact"]["phone"]
+const paragraphsNine = paragraphs[8]
+paragraphsNine.textContent = siteContent["contact"]["email"]
 
-
-// for (let i = 0; i < allHeaderFour.length; i++) { //Setting the loop to iterate and increment up
-//     allHeaderFour[i].textContent = siteContent[`${i}`]
-// }
-// allHeaderFour.textContent = siteContent["main-content"]
-// console.log(allHeaderFour)
-
-
-// //Paragraphs in main content
-// let mainParag = document.querySelector("text-content");
-// ctaButton.textContent = siteContent["cta"]["button"]
+//Footer element
+let footer = document.querySelector("footer");
+footer.textContent = siteContent["footer"]["copyright"]
 
 // ## Task 3: Add new content *
-//     [] Change the color of the navigation text to be green.*[] Utilize `.appendChild()`
+// [] Change the color of the navigation text to be green.*
+navigationItems.forEach(el => {
+    el.style.color = 'green';
+});
+//[] Utilize `.appendChild()`
+const newContent = document.createElement("nav")
+newContent.textContent = siteContent["main-content"]["features-content"]
+newContent.classList.add("footer-class")
+const body = document.querySelector('footer')
+body.appendChild(newContent)
+console.log("hello")
+
+
+console.log("World")
+
+// 9c: Add it to the DOM with appendChild
+// https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild
 // and `.prepend()`
-// to add two new items to the navigation system.You can call them whatever you want.*
+
+const parentElement = document.querySelector('footer');
+parentElement.prepend(newContent)
+
+
+// const parentElement = document.querySelector('body');
+// parentElement.appendChild(newContent);
+
+// to add two new items to the navigation system. You can call them whatever you want.
+
+const navItem = document.createElement("a")
+
+
+// navigationItems.classList.add('new-nav-link') // <li class="fruits"></li>
+// navigationItems.textContent = 'Blog' // <li class="fruits">kiwis</li>
+// document.querySelector('nav').append(navigationItems) // adds <li class="fruits">kiwis</li> to the DOM in <ul> below grapes
+
+// var tag = document.createElement("a");
+// navigationItems.innerHTML = '<span class="toggle">Jan</span>';
+
 //[] Check your work by looking at the[original html](original.html) in the browser
